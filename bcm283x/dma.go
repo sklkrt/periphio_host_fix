@@ -913,7 +913,7 @@ func dmaWriteStreamEdges(p *Pin, w gpiostream.Stream) error {
 	count := 1
 	stride := uint32(skip)
 	last := getBit(bits[0], 0, msb)
-	l := int(int64(d) * int64(w.Frequency()) / int64(physic.Hertz)) // Bits
+	l := len(bits) * 8
 	for i := 1; i < l; i++ {
 		if v := getBit(bits[i/8], i%8, msb); v != last || stride == maxLite {
 			last = v
